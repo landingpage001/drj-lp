@@ -1,0 +1,3483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Digital Growth Agency | Results-Driven Digital Marketing</title>
+
+  <meta name="description"
+        content="Grow your business with powerful, data-driven digital marketing, Meta Ads, Google Ads, SEO and lead generation.">
+
+  <meta name="theme-color" content="#07111f">
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    /* =====================================================
+       ROOT
+    ===================================================== */
+
+    :root {
+      --bg: #050b14;
+      --bg-soft: #081321;
+      --card: rgba(255,255,255,0.045);
+      --card-hover: rgba(255,255,255,0.075);
+
+      --white: #ffffff;
+      --text: #e9eef7;
+      --muted: #94a3b8;
+
+      --accent: #6c63ff;
+      --accent-2: #00d4ff;
+
+      --border: rgba(255,255,255,0.10);
+
+      --container: 1180px;
+
+      --radius: 22px;
+
+      --transition: 0.35s cubic-bezier(.2,.8,.2,1);
+    }
+
+
+    /* =====================================================
+       RESET
+    ===================================================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background:
+        radial-gradient(
+          circle at 10% 10%,
+          rgba(108,99,255,.12),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 90% 20%,
+          rgba(0,212,255,.08),
+          transparent 25%
+        ),
+        var(--bg);
+
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 40px));
+      margin: auto;
+    }
+
+
+    /* =====================================================
+       PRELOADER
+    ===================================================== */
+
+    .preloader {
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      display: grid;
+      place-items: center;
+      z-index: 9999;
+      transition: opacity .5s ease, visibility .5s ease;
+    }
+
+    .preloader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader {
+      width: 45px;
+      height: 45px;
+      border: 3px solid rgba(255,255,255,.15);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+
+    /* =====================================================
+       NAVBAR
+    ===================================================== */
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+
+      padding: 20px 0;
+
+      transition:
+        background var(--transition),
+        padding var(--transition),
+        box-shadow var(--transition);
+    }
+
+    .navbar.scrolled {
+      padding: 13px 0;
+      background: rgba(5,11,20,.82);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 10px 35px rgba(0,0,0,.20);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      font-family: "Manrope", sans-serif;
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -.5px;
+    }
+
+    .logo span {
+      color: var(--accent-2);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #cbd5e1;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+
+    /* =====================================================
+       BUTTONS
+    ===================================================== */
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+
+      min-height: 50px;
+      padding: 0 22px;
+
+      border-radius: 12px;
+      border: 1px solid transparent;
+
+      font-size: 14px;
+      font-weight: 700;
+
+      transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        background var(--transition),
+        border-color var(--transition);
+    }
+
+    .btn-primary {
+      color: white;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--accent),
+          #4c8dff
+        );
+
+      box-shadow:
+        0 12px 30px rgba(108,99,255,.22);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow:
+        0 18px 40px rgba(108,99,255,.35);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,.04);
+      border-color: var(--border);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+      background: rgba(255,255,255,.08);
+    }
+
+    .btn-arrow {
+      transition: transform var(--transition);
+    }
+
+    .btn:hover .btn-arrow {
+      transform: translateX(4px);
+    }
+
+
+    /* =====================================================
+       MOBILE MENU
+    ===================================================== */
+
+    .menu-toggle {
+      display: none;
+
+      width: 44px;
+      height: 44px;
+
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: white;
+      border-radius: 12px;
+    }
+
+    .mobile-menu {
+      display: none;
+    }
+
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 150px 0 90px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 70px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      padding: 8px 13px;
+
+      border: 1px solid rgba(108,99,255,.25);
+      border-radius: 999px;
+
+      background: rgba(108,99,255,.08);
+
+      color: #c7c4ff;
+
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+
+      margin-bottom: 25px;
+
+      animation: fadeUp .8s ease both;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent-2);
+      box-shadow: 0 0 14px var(--accent-2);
+    }
+
+    .hero h1 {
+      font-family: "Manrope", sans-serif;
+
+      font-size: clamp(44px, 6vw, 78px);
+
+      line-height: 1.03;
+      letter-spacing: -3.5px;
+
+      max-width: 850px;
+
+      animation: fadeUp .8s .1s ease both;
+    }
+
+    .gradient-text {
+      background:
+        linear-gradient(
+          100deg,
+          #ffffff,
+          #9c96ff,
+          #63e7ff
+        );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-description {
+      max-width: 650px;
+
+      margin-top: 25px;
+
+      color: var(--muted);
+
+      font-size: 17px;
+
+      animation: fadeUp .8s .2s ease both;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+
+      margin-top: 32px;
+
+      animation: fadeUp .8s .3s ease both;
+    }
+
+    .trust-line {
+      margin-top: 25px;
+      color: #64748b;
+      font-size: 12px;
+
+      animation: fadeUp .8s .4s ease both;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 500px;
+
+      display: grid;
+      place-items: center;
+
+      animation: scaleIn 1s .25s ease both;
+    }
+
+    .orb {
+      position: absolute;
+      width: 380px;
+      height: 380px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(108,99,255,.32),
+          rgba(0,212,255,.07) 45%,
+          transparent 70%
+        );
+
+      filter: blur(2px);
+
+      animation: float 7s ease-in-out infinite;
+    }
+
+    .dashboard {
+      position: relative;
+      width: min(100%, 470px);
+
+      padding: 20px;
+
+      border: 1px solid var(--border);
+      border-radius: 25px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.10),
+          rgba(255,255,255,.025)
+        );
+
+      backdrop-filter: blur(20px);
+
+      box-shadow:
+        0 30px 80px rgba(0,0,0,.45);
+
+      transform: perspective(1000px) rotateY(-7deg) rotateX(3deg);
+    }
+
+    .dash-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      margin-bottom: 20px;
+    }
+
+    .dash-title {
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .live {
+      color: #67e8f9;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .chart {
+      height: 200px;
+
+      display: flex;
+      align-items: end;
+      gap: 9px;
+
+      padding: 20px;
+
+      border-radius: 18px;
+
+      background: rgba(0,0,0,.18);
+    }
+
+    .bar {
+      flex: 1;
+
+      border-radius: 7px 7px 2px 2px;
+
+      background:
+        linear-gradient(
+          to top,
+          #554dff,
+          #55ddff
+        );
+
+      animation: growBar 1.3s ease both;
+    }
+
+    .bar:nth-child(1) { height: 32%; }
+    .bar:nth-child(2) { height: 45%; }
+    .bar:nth-child(3) { height: 40%; }
+    .bar:nth-child(4) { height: 62%; }
+    .bar:nth-child(5) { height: 57%; }
+    .bar:nth-child(6) { height: 76%; }
+    .bar:nth-child(7) { height: 92%; }
+
+    .dash-stats {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 10px;
+
+      margin-top: 13px;
+    }
+
+    .dash-stat {
+      padding: 14px;
+
+      border-radius: 15px;
+
+      background: rgba(255,255,255,.045);
+    }
+
+    .dash-stat strong {
+      display: block;
+      font-size: 20px;
+    }
+
+    .dash-stat span {
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+
+    /* =====================================================
+       SECTION
+    ===================================================== */
+
+    section {
+      padding: 110px 0;
+      position: relative;
+    }
+
+    .section-heading {
+      max-width: 720px;
+      margin-bottom: 55px;
+    }
+
+    .eyebrow {
+      color: #8d87ff;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-heading h2 {
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1.08;
+      letter-spacing: -2px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      margin-top: 16px;
+      max-width: 650px;
+    }
+
+
+    /* =====================================================
+       STATS
+    ===================================================== */
+
+    .stats {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,.018);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+    }
+
+    .stat {
+      padding: 35px 25px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+
+    .stat:last-child {
+      border-right: 0;
+    }
+
+    .stat strong {
+      display: block;
+
+      font-family: "Manrope", sans-serif;
+
+      font-size: 37px;
+      letter-spacing: -1px;
+
+      background: linear-gradient(
+        100deg,
+        #fff,
+        #77e8ff
+      );
+
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+
+    /* =====================================================
+       CARDS
+    ===================================================== */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 18px;
+    }
+
+    .card {
+      position: relative;
+
+      padding: 28px;
+
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.065),
+          rgba(255,255,255,.02)
+        );
+
+      transition:
+        transform var(--transition),
+        border-color var(--transition),
+        background var(--transition),
+        box-shadow var(--transition);
+
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+
+      position: absolute;
+      width: 150px;
+      height: 150px;
+
+      right: -80px;
+      top: -80px;
+
+      border-radius: 50%;
+
+      background: rgba(108,99,255,.15);
+
+      filter: blur(25px);
+
+      opacity: 0;
+
+      transition: opacity var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(108,99,255,.35);
+      background: var(--card-hover);
+
+      box-shadow:
+        0 25px 60px rgba(0,0,0,.25);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 14px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(108,99,255,.20),
+          rgba(0,212,255,.10)
+        );
+
+      border: 1px solid var(--border);
+
+      font-size: 21px;
+
+      margin-bottom: 22px;
+
+      transition: transform var(--transition);
+    }
+
+    .card:hover .icon {
+      transform: scale(1.1) rotate(-3deg);
+    }
+
+    .card h3 {
+      font-size: 18px;
+      margin-bottom: 9px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .learn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+
+      margin-top: 22px;
+
+      color: #a9a5ff;
+
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .learn span {
+      transition: transform var(--transition);
+    }
+
+    .card:hover .learn span {
+      transform: translateX(5px);
+    }
+
+
+    /* =====================================================
+       PROBLEM SECTION
+    ===================================================== */
+
+    .problem-section {
+      background:
+        linear-gradient(
+          180deg,
+          transparent,
+          rgba(108,99,255,.035),
+          transparent
+        );
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 16px;
+    }
+
+    .problem {
+      padding: 24px;
+
+      border: 1px solid var(--border);
+      border-radius: 18px;
+
+      background: rgba(255,255,255,.025);
+
+      transition: transform var(--transition);
+    }
+
+    .problem:hover {
+      transform: translateY(-5px);
+    }
+
+    .problem-number {
+      color: #707b90;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+
+    .problem h3 {
+      font-size: 16px;
+    }
+
+    .problem p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 6px;
+    }
+
+
+    /* =====================================================
+       PROCESS
+    ===================================================== */
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(5,1fr);
+      position: relative;
+      gap: 12px;
+    }
+
+    .process::before {
+      content: "";
+
+      position: absolute;
+
+      top: 28px;
+      left: 8%;
+      right: 8%;
+
+      height: 1px;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--accent),
+          var(--accent-2)
+        );
+
+      opacity: .3;
+    }
+
+    .process-step {
+      position: relative;
+      z-index: 1;
+
+      text-align: center;
+    }
+
+    .process-number {
+      width: 58px;
+      height: 58px;
+
+      display: grid;
+      place-items: center;
+
+      margin: auto auto 20px;
+
+      border-radius: 50%;
+
+      background: var(--bg-soft);
+
+      border: 1px solid rgba(108,99,255,.5);
+
+      color: white;
+
+      font-weight: 800;
+
+      box-shadow: 0 0 30px rgba(108,99,255,.10);
+    }
+
+    .process-step h3 {
+      font-size: 15px;
+    }
+
+    .process-step p {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+
+    /* =====================================================
+       WHY US
+    ===================================================== */
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .why-visual {
+      min-height: 400px;
+
+      display: grid;
+      place-items: center;
+
+      border: 1px solid var(--border);
+      border-radius: 28px;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(108,99,255,.18),
+          transparent 60%
+        );
+    }
+
+    .big-icon {
+      font-size: 100px;
+      filter: drop-shadow(0 20px 30px rgba(108,99,255,.25));
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 15px;
+    }
+
+    .feature {
+      padding: 21px;
+
+      border: 1px solid var(--border);
+      border-radius: 18px;
+
+      background: rgba(255,255,255,.025);
+    }
+
+    .feature strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .feature span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+
+    /* =====================================================
+       CASE STUDIES
+    ===================================================== */
+
+    .case-card {
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .case-industry {
+      color: #8d87ff;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .case-card h3 {
+      font-size: 22px;
+      margin-top: 10px;
+    }
+
+    .case-result {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 22px;
+    }
+
+    .metric {
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--border);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 19px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+
+    /* =====================================================
+       TESTIMONIALS
+    ===================================================== */
+
+    .testimonial-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial-track {
+      display: flex;
+      transition: transform .55s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .testimonial {
+      min-width: 100%;
+      padding: 45px;
+
+      border: 1px solid var(--border);
+      border-radius: 25px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.065),
+          rgba(255,255,255,.02)
+        );
+    }
+
+    .stars {
+      color: #fbbf24;
+      letter-spacing: 3px;
+    }
+
+    .testimonial blockquote {
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(20px,3vw,31px);
+      line-height: 1.35;
+      margin: 20px 0 30px;
+      max-width: 900px;
+    }
+
+    .person {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .avatar {
+      width: 45px;
+      height: 45px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--accent),
+          var(--accent-2)
+        );
+
+      font-weight: 800;
+    }
+
+    .person strong {
+      display: block;
+      font-size: 13px;
+    }
+
+    .person span {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .slider-controls {
+      display: flex;
+      gap: 8px;
+      margin-top: 15px;
+    }
+
+    .slider-btn {
+      width: 42px;
+      height: 42px;
+
+      border-radius: 10px;
+
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border);
+
+      color: white;
+
+      transition: background var(--transition);
+    }
+
+    .slider-btn:hover {
+      background: rgba(255,255,255,.09);
+    }
+
+
+    /* =====================================================
+       CTA
+    ===================================================== */
+
+    .cta {
+      padding: 100px 0;
+    }
+
+    .cta-box {
+      position: relative;
+      overflow: hidden;
+
+      text-align: center;
+
+      padding: 80px 30px;
+
+      border-radius: 30px;
+
+      border: 1px solid rgba(108,99,255,.25);
+
+      background:
+        radial-gradient(
+          circle at 50% 0%,
+          rgba(108,99,255,.20),
+          transparent 55%
+        ),
+        rgba(255,255,255,.025);
+    }
+
+    .cta-box h2 {
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(35px,5vw,58px);
+      line-height: 1.05;
+      letter-spacing: -2px;
+    }
+
+    .cta-box p {
+      color: var(--muted);
+      max-width: 620px;
+      margin: 18px auto 30px;
+    }
+
+
+    /* =====================================================
+       FAQ
+    ===================================================== */
+
+    .faq {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-question {
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 23px 0;
+
+      background: none;
+      border: 0;
+
+      color: white;
+
+      text-align: left;
+
+      font-weight: 700;
+    }
+
+    .faq-icon {
+      font-size: 22px;
+      color: #8d87ff;
+      transition: transform var(--transition);
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+
+      color: var(--muted);
+      font-size: 14px;
+
+      transition: max-height .4s ease;
+    }
+
+    .faq-answer p {
+      padding: 0 0 22px;
+    }
+
+
+    /* =====================================================
+       CONTACT
+    ===================================================== */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .contact-info p {
+      color: var(--muted);
+      margin-top: 14px;
+    }
+
+    .contact-details {
+      margin-top: 30px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-detail {
+      padding: 17px;
+
+      border: 1px solid var(--border);
+      border-radius: 15px;
+
+      background: rgba(255,255,255,.025);
+    }
+
+    .contact-detail span {
+      color: var(--muted);
+      display: block;
+      font-size: 11px;
+      margin-bottom: 3px;
+    }
+
+    .contact-detail strong {
+      font-size: 14px;
+    }
+
+    .form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 14px;
+    }
+
+    .field {
+      display: grid;
+      gap: 7px;
+    }
+
+    .field label {
+      font-size: 12px;
+      color: #cbd5e1;
+      font-weight: 600;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+
+      padding: 14px 15px;
+
+      border-radius: 12px;
+
+      border: 1px solid var(--border);
+
+      outline: none;
+
+      color: white;
+
+      background: rgba(255,255,255,.035);
+
+      transition:
+        border-color var(--transition),
+        background var(--transition);
+    }
+
+    .field textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: rgba(108,99,255,.65);
+      background: rgba(255,255,255,.055);
+    }
+
+    .form-message {
+      display: none;
+
+      padding: 13px;
+
+      border-radius: 10px;
+
+      background: rgba(34,197,94,.10);
+
+      color: #86efac;
+
+      font-size: 13px;
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    footer {
+      padding: 60px 0 25px;
+
+      background: #03070d;
+
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr repeat(3,1fr);
+      gap: 45px;
+    }
+
+    .footer-brand p {
+      color: var(--muted);
+      max-width: 320px;
+      margin-top: 14px;
+      font-size: 13px;
+    }
+
+    footer h4 {
+      margin-bottom: 15px;
+      font-size: 13px;
+    }
+
+    footer ul {
+      list-style: none;
+      display: grid;
+      gap: 9px;
+    }
+
+    footer li,
+    footer a {
+      color: #8491a5;
+      font-size: 12px;
+      transition: color var(--transition);
+    }
+
+    footer a:hover {
+      color: white;
+    }
+
+    .copyright {
+      margin-top: 50px;
+      padding-top: 20px;
+
+      border-top: 1px solid var(--border);
+
+      color: #64748b;
+      font-size: 11px;
+
+      text-align: center;
+    }
+
+
+    /* =====================================================
+       REVEAL ANIMATIONS
+    ===================================================== */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition:
+        opacity .8s ease,
+        transform .8s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .reveal.left {
+      transform: translateX(-40px);
+    }
+
+    .reveal.right {
+      transform: translateX(40px);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translate(0);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(.94);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes float {
+      0%,100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-14px);
+      }
+    }
+
+    @keyframes growBar {
+      from {
+        transform: scaleY(0);
+        transform-origin: bottom;
+      }
+
+      to {
+        transform: scaleY(1);
+      }
+    }
+
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media (max-width: 1000px) {
+
+      .nav-links,
+      .nav-actions {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .mobile-menu {
+        position: fixed;
+        top: 76px;
+        left: 20px;
+        right: 20px;
+
+        display: block;
+
+        padding: 20px;
+
+        border: 1px solid var(--border);
+        border-radius: 18px;
+
+        background: rgba(5,11,20,.96);
+        backdrop-filter: blur(20px);
+
+        transform: translateY(-15px);
+        opacity: 0;
+        pointer-events: none;
+
+        transition: var(--transition);
+      }
+
+      .mobile-menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .mobile-menu a {
+        display: block;
+        padding: 13px 4px;
+
+        color: #cbd5e1;
+
+        border-bottom: 1px solid var(--border);
+      }
+
+      .mobile-menu .btn {
+        margin-top: 15px;
+        width: 100%;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 130px;
+      }
+
+      .hero-visual {
+        min-height: 400px;
+      }
+
+      .why-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .process {
+        grid-template-columns: repeat(3,1fr);
+        row-gap: 40px;
+      }
+
+      .process::before {
+        display: none;
+      }
+    }
+
+
+    @media (max-width: 760px) {
+
+      .container {
+        width: min(100% - 28px, var(--container));
+      }
+
+      section {
+        padding: 75px 0;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 120px 0 70px;
+      }
+
+      .hero h1 {
+        font-size: clamp(42px, 12vw, 60px);
+        letter-spacing: -2.5px;
+      }
+
+      .hero-description {
+        font-size: 15px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .hero-buttons .btn {
+        width: 100%;
+      }
+
+      .hero-visual {
+        min-height: 330px;
+      }
+
+      .dashboard {
+        transform: none;
+      }
+
+      .orb {
+        width: 300px;
+        height: 300px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .stat {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .stat:nth-child(2) {
+        border-right: 0;
+      }
+
+      .cards,
+      .problem-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .process {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .process-step {
+        text-align: left;
+        display: grid;
+        grid-template-columns: 58px 1fr;
+        gap: 18px;
+        align-items: center;
+      }
+
+      .process-number {
+        margin: 0;
+      }
+
+      .feature-list {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonial {
+        padding: 28px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+    }
+
+
+    @media (max-width: 450px) {
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat {
+        border-right: 0;
+      }
+
+      .dash-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .chart {
+        height: 160px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+
+    /* =====================================================
+       REDUCED MOTION
+    ===================================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <!-- ===================================================
+       PRELOADER
+  =================================================== -->
+
+  <div class="preloader" id="preloader">
+    <div class="loader"></div>
+  </div>
+
+
+  <!-- ===================================================
+       NAVBAR
+  =================================================== -->
+
+  <header class="navbar" id="navbar">
+
+    <div class="container nav-inner">
+
+      <a href="#home" class="logo">
+        Growth<span>Lab.</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#results">Results</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-primary">
+          Get Started
+          <span class="btn-arrow">→</span>
+        </a>
+      </div>
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open menu"
+      >
+        ☰
+      </button>
+
+    </div>
+
+
+    <div class="mobile-menu" id="mobileMenu">
+
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#results">Results</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+
+      <a href="#contact" class="btn btn-primary">
+        Get Started →
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+    <!-- =================================================
+         HERO
+    ================================================== -->
+
+    <section class="hero" id="home">
+
+      <div class="container hero-grid">
+
+        <div class="hero-content">
+
+          <div class="badge">
+            <span class="badge-dot"></span>
+            RESULT-DRIVEN DIGITAL MARKETING
+          </div>
+
+          <h1>
+            Grow Your Business With
+            <span class="gradient-text">
+              Powerful Digital Marketing
+            </span>
+          </h1>
+
+          <p class="hero-description">
+            Turn your website traffic into qualified leads,
+            customers and measurable business growth with
+            strategic digital marketing.
+          </p>
+
+          <div class="hero-buttons">
+
+            <a href="#contact" class="btn btn-primary">
+              Get Started
+              <span class="btn-arrow">→</span>
+            </a>
+
+            <a href="#contact" class="btn btn-secondary">
+              Book a Free Consultation
+            </a>
+
+          </div>
+
+          <div class="trust-line">
+            Trusted by businesses • Results-focused • Data-driven
+          </div>
+
+        </div>
+
+
+        <div class="hero-visual">
+
+          <div class="orb"></div>
+
+          <div class="dashboard">
+
+            <div class="dash-top">
+              <div class="dash-title">
+                Campaign Performance
+              </div>
+
+              <div class="live">
+                ● LIVE
+              </div>
+            </div>
+
+            <div class="chart">
+
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+
+            </div>
+
+            <div class="dash-stats">
+
+              <div class="dash-stat">
+                <strong>+185%</strong>
+                <span>Leads</span>
+              </div>
+
+              <div class="dash-stat">
+                <strong>-32%</strong>
+                <span>CPL</span>
+              </div>
+
+              <div class="dash-stat">
+                <strong>+72%</strong>
+                <span>Conversion</span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         STATS
+    ================================================== -->
+
+    <section class="stats">
+
+      <div class="container stats-grid">
+
+        <div class="stat">
+          <strong data-counter="100">0</strong>
+          <span>Projects Completed</span>
+        </div>
+
+        <div class="stat">
+          <strong data-counter="50">0</strong>
+          <span>Happy Clients</span>
+        </div>
+
+        <div class="stat">
+          <strong data-counter="5">0</strong>
+          <span>Years Experience</span>
+        </div>
+
+        <div class="stat">
+          <strong data-counter="24">0</strong>
+          <span>Support</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         SERVICES
+    ================================================== -->
+
+    <section id="services">
+
+      <div class="container">
+
+        <div class="section-heading reveal">
+
+          <div class="eyebrow">
+            Our Services
+          </div>
+
+          <h2>
+            Everything You Need To
+            <span class="gradient-text">
+              Grow Online
+            </span>
+          </h2>
+
+          <p>
+            From paid advertising to organic growth,
+            we build digital strategies designed around
+            measurable business outcomes.
+          </p>
+
+        </div>
+
+
+        <div class="cards">
+
+          <article class="card reveal">
+
+            <div class="icon">◈</div>
+
+            <h3>Meta Ads</h3>
+
+            <p>
+              Reach the right audience with targeted,
+              conversion-focused Facebook and Instagram campaigns.
+            </p>
+
+            <a href="#contact" class="learn">
+              Learn More <span>→</span>
+            </a>
+
+          </article>
+
+
+          <article class="card reveal">
+
+            <div class="icon">◎</div>
+
+            <h3>Google Ads</h3>
+
+            <p>
+              Capture high-intent searches and turn
+              advertising spend into qualified leads.
+            </p>
+
+            <a href="#contact" class="learn">
+              Learn More <span>→</span>
+            </a>
+
+          </article>
+
+
+          <article class="card reveal">
+
+            <div class="icon">⌁</div>
+
+            <h3>SEO</h3>
+
+            <p>
+              Build sustainable organic visibility and
+              attract people actively searching for your business.
+            </p>
+
+            <a href="#contact" class="learn">
+              Learn More <span>→</span>
+            </a>
+
+          </article>
+
+
+          <article class="card reveal">
+
+            <div class="icon">▣</div>
+
+            <h3>Websites & Landing Pages</h3>
+
+            <p>
+              Create fast, responsive and conversion-focused
+              digital experiences.
+            </p>
+
+            <a href="#contact" class="learn">
+              Learn More <span>→</span>
+            </a>
+
+          </article>
+
+
+          <article class="card reveal">
+
+            <div class="icon">✦</div>
+
+            <h3>Social Media Marketing</h3>
+
+            <p>
+              Build your brand presence with strategic,
+              engaging and consistent content.
+            </p>
+
+            <a href="#contact" class="learn">
+              Learn More <span>→</span>
+            </a>
+
+          </article>
+
+
+          <article class="card reveal">
+
+            <div class="icon">↗</div>
+
+            <h3>Lead Generation</h3>
+
+            <p>
+              Build acquisition systems designed to generate
+              qualified prospects for your business.
+            </p>
+
+            <a href="#contact" class="learn">
+              Learn More <span>→</span>
+            </a>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         PROBLEM
+    ================================================== -->
+
+    <section class="problem-section">
+
+      <div class="container">
+
+        <div class="section-heading reveal">
+
+          <div class="eyebrow">
+            The Problem
+          </div>
+
+          <h2>
+            Is Your Marketing Not
+            <span class="gradient-text">
+              Delivering Results?
+            </span>
+          </h2>
+
+        </div>
+
+
+        <div class="problem-grid">
+
+          <div class="problem reveal">
+            <div class="problem-number">01</div>
+            <h3>High Advertising Costs</h3>
+            <p>
+              Spending more without seeing proportional growth.
+            </p>
+          </div>
+
+          <div class="problem reveal">
+            <div class="problem-number">02</div>
+            <h3>Low-Quality Leads</h3>
+            <p>
+              Getting inquiries that don't turn into customers.
+            </p>
+          </div>
+
+          <div class="problem reveal">
+            <div class="problem-number">03</div>
+            <h3>Poor Conversion Rates</h3>
+            <p>
+              Traffic is coming in but visitors aren't converting.
+            </p>
+          </div>
+
+          <div class="problem reveal">
+            <div class="problem-number">04</div>
+            <h3>Low Website Traffic</h3>
+            <p>
+              Your business isn't reaching enough potential customers.
+            </p>
+          </div>
+
+          <div class="problem reveal">
+            <div class="problem-number">05</div>
+            <h3>Inconsistent Sales</h3>
+            <p>
+              Marketing results fluctuate without a predictable system.
+            </p>
+          </div>
+
+          <div class="problem reveal">
+            <div class="problem-number">06</div>
+            <h3>No Clear Strategy</h3>
+            <p>
+              Different channels are running without a unified plan.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         PROCESS
+    ================================================== -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="section-heading reveal">
+
+          <div class="eyebrow">
+            Our Process
+          </div>
+
+          <h2>
+            A Smarter Approach To
+            <span class="gradient-text">
+              Digital Growth
+            </span>
+          </h2>
+
+        </div>
+
+
+        <div class="process">
+
+          <div class="process-step reveal">
+
+            <div class="process-number">01</div>
+
+            <div>
+              <h3>Understand</h3>
+              <p>Understand your business and audience.</p>
+            </div>
+
+          </div>
+
+
+          <div class="process-step reveal">
+
+            <div class="process-number">02</div>
+
+            <div>
+              <h3>Strategize</h3>
+              <p>Build a customized growth strategy.</p>
+            </div>
+
+          </div>
+
+
+          <div class="process-step reveal">
+
+            <div class="process-number">03</div>
+
+            <div>
+              <h3>Launch</h3>
+              <p>Launch campaigns and digital assets.</p>
+            </div>
+
+          </div>
+
+
+          <div class="process-step reveal">
+
+            <div class="process-number">04</div>
+
+            <div>
+              <h3>Optimize</h3>
+              <p>Continuously improve performance.</p>
+            </div>
+
+          </div>
+
+
+          <div class="process-step reveal">
+
+            <div class="process-number">05</div>
+
+            <div>
+              <h3>Scale</h3>
+              <p>Scale what works and grow efficiently.</p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         WHY US
+    ================================================== -->
+
+    <section id="about">
+
+      <div class="container why-grid">
+
+        <div class="why-visual reveal left">
+
+          <div class="big-icon">
+            ✦
+          </div>
+
+        </div>
+
+
+        <div>
+
+          <div class="section-heading reveal">
+
+            <div class="eyebrow">
+              Why Choose Us
+            </div>
+
+            <h2>
+              Marketing Built Around
+              <span class="gradient-text">
+                Your Growth
+              </span>
+            </h2>
+
+            <p>
+              We focus on strategy, execution and optimization
+              instead of chasing vanity metrics.
+            </p>
+
+          </div>
+
+
+          <div class="feature-list">
+
+            <div class="feature reveal">
+              <strong>Data-Driven Strategies</strong>
+              <span>Decisions backed by meaningful performance data.</span>
+            </div>
+
+            <div class="feature reveal">
+              <strong>Transparent Reporting</strong>
+              <span>Clear reporting so you understand performance.</span>
+            </div>
+
+            <div class="feature reveal">
+              <strong>Conversion-Focused</strong>
+              <span>Marketing designed around business outcomes.</span>
+            </div>
+
+            <div class="feature reveal">
+              <strong>Customized Plans</strong>
+              <span>Strategies built around your unique goals.</span>
+            </div>
+
+            <div class="feature reveal">
+              <strong>Continuous Optimization</strong>
+              <span>Campaigns are monitored and improved continuously.</span>
+            </div>
+
+            <div class="feature reveal">
+              <strong>Dedicated Support</strong>
+              <span>Responsive communication when you need it.</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         RESULTS
+    ================================================== -->
+
+    <section id="results">
+
+      <div class="container">
+
+        <div class="section-heading reveal">
+
+          <div class="eyebrow">
+            Case Studies
+          </div>
+
+          <h2>
+            Real Strategies.
+            <span class="gradient-text">
+              Measurable Results.
+            </span>
+          </h2>
+
+          <p>
+            Replace these demo metrics with verified client
+            performance data before publishing.
+          </p>
+
+        </div>
+
+
+        <div class="cards">
+
+          <article class="card case-card reveal">
+
+            <div>
+
+              <div class="case-industry">
+                Demo • E-Commerce
+              </div>
+
+              <h3>
+                Performance Campaign
+              </h3>
+
+              <p>
+                Paid acquisition strategy focused on improving
+                qualified traffic and conversion efficiency.
+              </p>
+
+            </div>
+
+            <div class="case-result">
+
+              <div class="metric">
+                <strong>+185%</strong>
+                <span>Demo Leads</span>
+              </div>
+
+              <div class="metric">
+                <strong>-32%</strong>
+                <span>Demo CPL</span>
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <article class="card case-card reveal">
+
+            <div>
+
+              <div class="case-industry">
+                Demo • Local Business
+              </div>
+
+              <h3>
+                Lead Generation
+              </h3>
+
+              <p>
+                Local campaign structure designed to improve
+                qualified inquiries and lead quality.
+              </p>
+
+            </div>
+
+            <div class="case-result">
+
+              <div class="metric">
+                <strong>+72%</strong>
+                <span>Demo Conversion</span>
+              </div>
+
+              <div class="metric">
+                <strong>2.4X</strong>
+                <span>Demo ROAS</span>
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <article class="card case-card reveal">
+
+            <div>
+
+              <div class="case-industry">
+                Demo • Service Business
+              </div>
+
+              <h3>
+                Growth Strategy
+              </h3>
+
+              <p>
+                Multi-channel marketing strategy focused on
+                building consistent demand.
+              </p>
+
+            </div>
+
+            <div class="case-result">
+
+              <div class="metric">
+                <strong>+120%</strong>
+                <span>Demo Traffic</span>
+              </div>
+
+              <div class="metric">
+                <strong>+48%</strong>
+                <span>Demo Leads</span>
+              </div>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         TESTIMONIALS
+    ================================================== -->
+
+    <section id="testimonials">
+
+      <div class="container">
+
+        <div class="section-heading reveal">
+
+          <div class="eyebrow">
+            Testimonials
+          </div>
+
+          <h2>
+            What Our Clients
+            <span class="gradient-text">
+              Say
+            </span>
+          </h2>
+
+        </div>
+
+
+        <div class="testimonial-wrap">
+
+          <div class="testimonial-track" id="testimonialTrack">
+
+            <article class="testimonial">
+
+              <div class="stars">
+                ★★★★★
+              </div>
+
+              <blockquote>
+                "The strategy completely changed the way
+                we approached digital marketing. Replace this
+                demo testimonial with a verified client review."
+              </blockquote>
+
+              <div class="person">
+
+                <div class="avatar">
+                  AK
+                </div>
+
+                <div>
+                  <strong>Client Name</strong>
+                  <span>Business Owner</span>
+                </div>
+
+              </div>
+
+            </article>
+
+
+            <article class="testimonial">
+
+              <div class="stars">
+                ★★★★★
+              </div>
+
+              <blockquote>
+                "Clear communication, structured campaigns
+                and a much better understanding of our customer
+                acquisition process."
+              </blockquote>
+
+              <div class="person">
+
+                <div class="avatar">
+                  RS
+                </div>
+
+                <div>
+                  <strong>Client Name</strong>
+                  <span>Founder</span>
+                </div>
+
+              </div>
+
+            </article>
+
+
+            <article class="testimonial">
+
+              <div class="stars">
+                ★★★★★
+              </div>
+
+              <blockquote>
+                "A professional process from strategy to
+                execution. Replace this text with an actual
+                verified customer testimonial."
+              </blockquote>
+
+              <div class="person">
+
+                <div class="avatar">
+                  MK
+                </div>
+
+                <div>
+                  <strong>Client Name</strong>
+                  <span>Business Owner</span>
+                </div>
+
+              </div>
+
+            </article>
+
+          </div>
+
+        </div>
+
+
+        <div class="slider-controls">
+
+          <button
+            class="slider-btn"
+            id="prevBtn"
+            aria-label="Previous testimonial"
+          >
+            ←
+          </button>
+
+          <button
+            class="slider-btn"
+            id="nextBtn"
+            aria-label="Next testimonial"
+          >
+            →
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         CTA
+    ================================================== -->
+
+    <section class="cta">
+
+      <div class="container">
+
+        <div class="cta-box reveal">
+
+          <div class="eyebrow">
+            Let's Grow Together
+          </div>
+
+          <h2>
+            Ready To Grow
+            <span class="gradient-text">
+              Your Business?
+            </span>
+          </h2>
+
+          <p>
+            Let's build a marketing strategy designed around
+            your goals, audience and growth targets.
+          </p>
+
+          <a href="#contact" class="btn btn-primary">
+            Book Your Free Consultation
+            <span class="btn-arrow">→</span>
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         FAQ
+    ================================================== -->
+
+    <section id="faq">
+
+      <div class="container">
+
+        <div class="section-heading reveal">
+
+          <div class="eyebrow">
+            FAQ
+          </div>
+
+          <h2>
+            Frequently Asked
+            <span class="gradient-text">
+              Questions
+            </span>
+          </h2>
+
+        </div>
+
+
+        <div class="faq">
+
+          <div class="faq-item">
+
+            <button class="faq-question">
+              What services do you provide?
+              <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+              <p>
+                We provide digital marketing services including
+                Meta Ads, Google Ads, SEO, websites, social media
+                marketing and lead generation.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="faq-item">
+
+            <button class="faq-question">
+              How does your process work?
+              <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+              <p>
+                We understand your business, create a strategy,
+                launch campaigns, optimize performance and scale
+                what works.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="faq-item">
+
+            <button class="faq-question">
+              How quickly can we get started?
+              <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+              <p>
+                After the initial consultation and required
+                information are provided, the project can move
+                into the strategy and setup stage.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="faq-item">
+
+            <button class="faq-question">
+              Do you work with small businesses?
+              <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+              <p>
+                Yes. Strategies can be customized according to
+                the business size, goals, audience and available
+                marketing resources.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="faq-item">
+
+            <button class="faq-question">
+              How do you measure campaign performance?
+              <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+              <p>
+                Performance can be evaluated using relevant
+                metrics such as leads, conversions, cost per lead,
+                conversion rate and return on advertising spend.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="faq-item">
+
+            <button class="faq-question">
+              Do you provide monthly reporting?
+              <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+              <p>
+                Reporting can be provided according to the
+                requirements and scope of the marketing project.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="faq-item">
+
+            <button class="faq-question">
+              What is the minimum advertising budget?
+              <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+              <p>
+                Advertising budgets depend on the industry,
+                target audience, location, competition and campaign
+                objectives. This can be discussed during consultation.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="faq-item">
+
+            <button class="faq-question">
+              How can I contact you?
+              <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+              <p>
+                Use the contact form below to submit your details
+                and project requirements.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         CONTACT
+    ================================================== -->
+
+    <section id="contact">
+
+      <div class="container contact-grid">
+
+        <div class="contact-info reveal left">
+
+          <div class="section-heading">
+
+            <div class="eyebrow">
+              Contact
+            </div>
+
+            <h2>
+              Let's Turn Your
+              <span class="gradient-text">
+                Goals Into Growth.
+              </span>
+            </h2>
+
+            <p>
+              Tell us about your business and we'll discuss
+              the right digital marketing approach for your goals.
+            </p>
+
+          </div>
+
+
+          <div class="contact-details">
+
+            <div class="contact-detail">
+              <span>Email</span>
+              <strong>hello@example.com</strong>
+            </div>
+
+            <div class="contact-detail">
+              <span>Phone</span>
+              <strong>+91 98765 43210</strong>
+            </div>
+
+            <div class="contact-detail">
+              <span>Availability</span>
+              <strong>Mon – Sat</strong>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <form class="form reveal" id="leadForm">
+
+          <div class="form-row">
+
+            <div class="field">
+              <label for="name">Name *</label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                placeholder="Your name"
+                required
+              >
+            </div>
+
+            <div class="field">
+              <label for="phone">Phone *</label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                placeholder="+91"
+                required
+              >
+            </div>
+
+          </div>
+
+
+          <div class="form-row">
+
+            <div class="field">
+              <label for="email">Email *</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="you@example.com"
+                required
+              >
+            </div>
+
+            <div class="field">
+              <label for="company">Business / Company</label>
+              <input
+                id="company"
+                name="company"
+                type="text"
+                placeholder="Company name"
+              >
+            </div>
+
+          </div>
+
+
+          <div class="form-row">
+
+            <div class="field">
+
+              <label for="service">
+                Service Required
+              </label>
+
+              <select id="service" name="service">
+
+                <option value="">
+                  Select service
+                </option>
+
+                <option>Meta Ads</option>
+                <option>Google Ads</option>
+                <option>SEO</option>
+                <option>Website / Landing Page</option>
+                <option>Social Media Marketing</option>
+                <option>Lead Generation</option>
+
+              </select>
+
+            </div>
+
+
+            <div class="field">
+
+              <label for="budget">
+                Monthly Marketing Budget
+              </label>
+
+              <select id="budget" name="budget">
+
+                <option value="">
+                  Select budget
+                </option>
+
+                <option>₹10K – ₹25K</option>
+                <option>₹25K – ₹50K</option>
+                <option>₹50K – ₹1L</option>
+                <option>₹1L+</option>
+
+              </select>
+
+            </div>
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="message">
+              Tell us about your project
+            </label>
+
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Tell us about your business and goals..."
+            ></textarea>
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="btn btn-primary"
+          >
+            Get My Free Consultation
+            <span class="btn-arrow">→</span>
+          </button>
+
+
+          <div
+            class="form-message"
+            id="formMessage"
+          >
+            Thank you! Your enquiry has been submitted.
+          </div>
+
+        </form>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ===================================================
+       FOOTER
+  ==================================================== -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+
+          <a href="#home" class="logo">
+            Growth<span>Lab.</span>
+          </a>
+
+          <p>
+            Data-driven digital marketing designed to help
+            businesses generate qualified leads and sustainable growth.
+          </p>
+
+        </div>
+
+
+        <div>
+
+          <h4>Navigation</h4>
+
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#results">Results</a></li>
+          </ul>
+
+        </div>
+
+
+        <div>
+
+          <h4>Services</h4>
+
+          <ul>
+            <li><a href="#services">Meta Ads</a></li>
+            <li><a href="#services">Google Ads</a></li>
+            <li><a href="#services">SEO</a></li>
+            <li><a href="#services">Lead Generation</a></li>
+          </ul>
+
+        </div>
+
+
+        <div>
+
+          <h4>Legal</h4>
+
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+
+        </div>
+
+      </div>
+
+
+      <div class="copyright">
+        © 2026 GrowthLab. All rights reserved.
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- ===================================================
+       JAVASCRIPT
+  ==================================================== -->
+
+  <script>
+
+    /* =====================================================
+       PRELOADER
+    ===================================================== */
+
+    window.addEventListener("load", () => {
+
+      const preloader =
+        document.getElementById("preloader");
+
+      setTimeout(() => {
+        preloader.classList.add("hidden");
+      }, 400);
+
+    });
+
+
+    /* =====================================================
+       NAVBAR SCROLL
+    ===================================================== */
+
+    const navbar =
+      document.getElementById("navbar");
+
+    window.addEventListener("scroll", () => {
+
+      if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+
+    });
+
+
+    /* =====================================================
+       MOBILE MENU
+    ===================================================== */
+
+    const menuToggle =
+      document.getElementById("menuToggle");
+
+    const mobileMenu =
+      document.getElementById("mobileMenu");
+
+    menuToggle.addEventListener("click", () => {
+
+      mobileMenu.classList.toggle("active");
+
+      const isOpen =
+        mobileMenu.classList.contains("active");
+
+      menuToggle.textContent =
+        isOpen ? "✕" : "☰";
+
+    });
+
+
+    document.querySelectorAll(".mobile-menu a")
+      .forEach(link => {
+
+        link.addEventListener("click", () => {
+
+          mobileMenu.classList.remove("active");
+
+          menuToggle.textContent = "☰";
+
+        });
+
+      });
+
+
+    /* =====================================================
+       SCROLL REVEAL
+    ===================================================== */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+    const revealObserver =
+      new IntersectionObserver(
+
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("visible");
+
+              revealObserver.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+
+        {
+          threshold: 0.12
+        }
+
+      );
+
+
+    revealElements.forEach(element => {
+      revealObserver.observe(element);
+    });
+
+
+    /* =====================================================
+       COUNTERS
+    ===================================================== */
+
+    const counters =
+      document.querySelectorAll("[data-counter]");
+
+    let counterStarted = false;
+
+    const counterObserver =
+      new IntersectionObserver(
+
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (
+              entry.isIntersecting &&
+              !counterStarted
+            ) {
+
+              counterStarted = true;
+
+              counters.forEach(counter => {
+
+                const target =
+                  Number(
+                    counter.dataset.counter
+                  );
+
+                const duration = 1600;
+
+                const startTime =
+                  performance.now();
+
+
+                function updateCounter(currentTime) {
+
+                  const elapsed =
+                    currentTime - startTime;
+
+                  const progress =
+                    Math.min(
+                      elapsed / duration,
+                      1
+                    );
+
+                  const eased =
+                    1 - Math.pow(
+                      1 - progress,
+                      3
+                    );
+
+                  counter.textContent =
+                    Math.floor(
+                      eased * target
+                    );
+
+                  if (progress < 1) {
+
+                    requestAnimationFrame(
+                      updateCounter
+                    );
+
+                  } else {
+
+                    counter.textContent =
+                      target + "+";
+
+                  }
+
+                }
+
+
+                requestAnimationFrame(
+                  updateCounter
+                );
+
+              });
+
+              counterObserver.disconnect();
+
+            }
+
+          });
+
+        },
+
+        {
+          threshold: .4
+        }
+
+      );
+
+
+    const statsSection =
+      document.querySelector(".stats");
+
+    if (statsSection) {
+      counterObserver.observe(statsSection);
+    }
+
+
+    /* =====================================================
+       FAQ ACCORDION
+    ===================================================== */
+
+    const faqItems =
+      document.querySelectorAll(".faq-item");
+
+    faqItems.forEach(item => {
+
+      const question =
+        item.querySelector(".faq-question");
+
+      const answer =
+        item.querySelector(".faq-answer");
+
+
+      question.addEventListener("click", () => {
+
+        faqItems.forEach(otherItem => {
+
+          if (otherItem !== item) {
+
+            otherItem.classList.remove("active");
+
+            otherItem.querySelector(
+              ".faq-answer"
+            ).style.maxHeight = null;
+
+          }
+
+        });
+
+
+        item.classList.toggle("active");
+
+
+        if (item.classList.contains("active")) {
+
+          answer.style.maxHeight =
+            answer.scrollHeight + "px";
+
+        } else {
+
+          answer.style.maxHeight = null;
+
+        }
+
+      });
+
+    });
+
+
+    /* =====================================================
+       TESTIMONIAL SLIDER
+    ===================================================== */
+
+    const track =
+      document.getElementById(
+        "testimonialTrack"
+      );
+
+    const testimonials =
+      document.querySelectorAll(".testimonial");
+
+    const nextBtn =
+      document.getElementById("nextBtn");
+
+    const prevBtn =
+      document.getElementById("prevBtn");
+
+    let currentSlide = 0;
+
+
+    function updateSlider() {
+
+      track.style.transform =
+        `translateX(-${currentSlide * 100}%)`;
+
+    }
+
+
+    nextBtn.addEventListener("click", () => {
+
+      currentSlide =
+        (currentSlide + 1) %
+        testimonials.length;
+
+      updateSlider();
+
+    });
+
+
+    prevBtn.addEventListener("click", () => {
+
+      currentSlide =
+        (currentSlide - 1 +
+          testimonials.length) %
+        testimonials.length;
+
+      updateSlider();
+
+    });
+
+
+    /* =====================================================
+       AUTO SLIDER
+    ===================================================== */
+
+    setInterval(() => {
+
+      currentSlide =
+        (currentSlide + 1) %
+        testimonials.length;
+
+      updateSlider();
+
+    }, 6000);
+
+
+    /* =====================================================
+       CONTACT FORM
+    ===================================================== */
+
+    const form =
+      document.getElementById("leadForm");
+
+    const formMessage =
+      document.getElementById("formMessage");
+
+
+    form.addEventListener("submit", event => {
+
+      event.preventDefault();
+
+
+      if (!form.checkValidity()) {
+
+        form.reportValidity();
+
+        return;
+
+      }
+
+
+      formMessage.style.display = "block";
+
+      formMessage.textContent =
+        "Thank you! Your enquiry has been submitted.";
+
+
+      form.reset();
+
+
+      setTimeout(() => {
+
+        formMessage.style.display = "none";
+
+      }, 5000);
+
+    });
+
+
+    /* =====================================================
+       SMOOTH INTERNAL LINKS
+    ===================================================== */
+
+    document
+      .querySelectorAll('a[href^="#"]')
+      .forEach(link => {
+
+        link.addEventListener("click", event => {
+
+          const targetId =
+            link.getAttribute("href");
+
+          if (
+            targetId === "#" ||
+            !document.querySelector(targetId)
+          ) {
+            return;
+          }
+
+
+          event.preventDefault();
+
+
+          document
+            .querySelector(targetId)
+            .scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+            });
+
+        });
+
+      });
+
+  </script>
+
+</body>
+</html>
